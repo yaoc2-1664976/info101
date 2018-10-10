@@ -1,12 +1,13 @@
+<?xml version="1.0" ?>
 <rss version="2.0">
 <channel>
-    <title>info101-yaoc2</title>
-    <link>https://yaoc2-1664976.github.io/embeddingOriginalWork.html</link>
-    <description></description>
-    <item>
-      <title>info101-yaoc2-update</title>
+  <title>info101</title>
+  <link>https://yaoc2-1664976.github.io/</link>
+  <description>XML graphical interface etc...</description>
+  <item>
+      <title>News  of today</title>
       <link>https://yaoc2-1664976.github.io/embeddingOriginalWork.html</link>
-      <description>... some text...</description>
-    </item>
+      <description>All you need to know about RSS</description>
+  </item>
 </channel>
 </rss>
