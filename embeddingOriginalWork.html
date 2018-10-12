@@ -6,38 +6,57 @@
     <script type="text/javascript">
       google.load("feeds", "1")
     </script>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="src/jquery.rss.js"></script>
+    <script src="moment.min.js"></script>
+
     <title>
       Embedding Original Work
     </title>
   </head>
   <script>
+  $("#rss-feeds").rss("https://feeds.feedburner.com/jquery-script",{
 
-    function fetchRSSFeed() {
-      var element = document.getElementById("rss_feed");
-      var feed = new google.feeds.Feed(element.dataset.feed);
-      feed.setNumEntries(element.dataset.count);
-      feed.load(showRSSFeed);
-    }
+    // will request the API via https
+    ssl: false
 
-    function showRSSFeed(result) {
+    // which server should be requested for feed parsing
+    host: 'http://feeds.feedburner.com/zhihu-daily',
 
-      var html = "";
+    // max number of RSS feeds
+    limit: 4,
 
-      if (!result.error) {
-        var entries = result.feed.entries;
-        for (var i = 0; i < entries.length; i++) {
-          html += "<li><a href='" + entries[i].link + "'target='_blank'>" + entries[i].title + "</a></li>"
-        }
-      } else {
-        html = "Error: " + result.error.message;
-      }
+    // custom templates
+    layoutTemplate: '<ul>{entries}</ul>',
+    entryTemplate: '<li><a href="{url}">[{author}@{<a href="https://www.jqueryscript.net/time-clock/">date</a>}] {title}</a><br/>{shortBodyPlain}</li>',
 
-      document.getElementById("rss_feed").innerHTML = "<ul>" + html + "</ul>";
-    }
+    // additional token definition for in-template-usage
+    tokens: {},
 
-    window.onload = function() {
-      fetchRSSFeed();
-    }
+    // output Mode
+    outputMode: 'json',
+
+    // custom date format
+    dateFormat: 'dddd MMM Do',
+
+    // localizes the date with moment.js
+    dateLocale: 'en',
+
+    // 'show', 'slide', 'slideFast', 'slideSynced', 'slideFastSynced'
+    effect: 'show',
+
+    // offset results being displayed
+    offsetStart: false,
+    offsetEnd: false,
+
+    // callbacks
+    error: function () {
+      console.log('jQuery RSS: url doesn\'t link to RSS-Feed');
+    },
+    onData: function () {},
+    success: function () {}
+
+  })
   </script>
 
   <body>
@@ -62,9 +81,8 @@
     <a href="https://yaoc2-1664976.github.io/rss.xml" target="_blank">This is RSS subscribe</a>
     <object width="100%" height="500px" data="SampleHtmlObj.html"></object>
 
-    <div id="rss_feed"
-     data-feed="http://feeds.labnol.org/labnol"
-     data-count="12">Loading RSS Feed..</div>
+        <script src="//rss.bloople.net/?url=http%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fworld%2Frss.xml&showtitle=false&type=js"></script>
+
 
   </body>
 </html>
