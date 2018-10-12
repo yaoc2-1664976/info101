@@ -1,12 +1,48 @@
 <!DOCTYPE html>
 <html>
+
   <head>
+    <script src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("feeds", "1")
+    </script>
     <title>
       Embedding Original Work
     </title>
   </head>
+  <script>
+
+    function fetchRSSFeed() {
+      var element = document.getElementById("rss_feed");
+      var feed = new google.feeds.Feed(element.dataset.feed);
+      feed.setNumEntries(element.dataset.count);
+      feed.load(showRSSFeed);
+    }
+
+    function showRSSFeed(result) {
+
+      var html = "";
+
+      if (!result.error) {
+        var entries = result.feed.entries;
+        for (var i = 0; i < entries.length; i++) {
+          html += "<li><a href='" + entries[i].link + "'target='_blank'>" + entries[i].title + "</a></li>"
+        }
+      } else {
+        html = "Error: " + result.error.message;
+      }
+
+      document.getElementById("rss_feed").innerHTML = "<ul>" + html + "</ul>";
+    }
+
+    window.onload = function() {
+      fetchRSSFeed();
+    }
+  </script>
+
   <body>
     <h1>Embedding Original Work</h1>
+
 
     <h2>Here is a audio tag MP3 of my favorite song</h2>
     This is from youtube <a href="https://www.youtube.com/watch?v=RwqvrGaGXDI">page</a>
@@ -25,6 +61,10 @@
     <iframe width="560" height="315" align="right" src="https://www.youtube.com/embed/fB8TyLTD7EE?start=180" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     <a href="https://yaoc2-1664976.github.io/rss.xml" target="_blank">This is RSS subscribe</a>
     <object width="100%" height="500px" data="SampleHtmlObj.html"></object>
+
+    <div id="rss_feed"
+     data-feed="http://feeds.labnol.org/labnol"
+     data-count="12">Loading RSS Feed..</div>
 
   </body>
 </html>
