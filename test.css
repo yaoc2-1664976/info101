@@ -8,6 +8,7 @@ h1{
   font-family: "Passion One";
   color: #FFBC00;
   font-weight: bold;
+  letter-spacing: 3px;
 }
 
 h3{
@@ -15,13 +16,16 @@ h3{
   font-family: "Passion One";
   color: #FFBC00;
   margin-bottom: : 0px;
+  letter-spacing: 1px;
 }
 
 p {
   font-weight: bold;
   color: white;
   font-family: "Arial";
+  text-indent: 50px;
 }
+
 
 body{
   background-image: url("dark_wood.png");
@@ -29,6 +33,7 @@ body{
 
 div {
   background-color: #8E41D5;
+  text-align: justify;
 }
 
 a {
@@ -85,4 +90,5 @@ a:hover, a:active {
   margin-bottom:10px;
   text-align: center;
   border: solid 8px black;
+  direction: rtl;
 }
