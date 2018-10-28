@@ -1,0 +1,15 @@
+#floatImg {
+	float: right;
+	width: 300px;
+	height: 300px;
+}
+
+#roundBorder {
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 25px;
+}
+
+H1{
+  font-size: 20px;
+}
