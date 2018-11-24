@@ -28,5 +28,10 @@ p2{
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	color: #FFFFFF;
+	color: #00FFdd;
+}
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
 }
